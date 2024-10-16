@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAHIl FIRM</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        section {
+            padding: 20px;
+            background: #fff;
+            margin: 20px;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background: #333;
+            color: #fff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 500px;
+            margin: auto;
+        }
+        label {
+            margin-top: 10px;
+        }
+        input, textarea {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        @media (max-width: 600px) {
+            nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Sahil Firm</h1>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="home">
+    <h2>Home</h2>
+    <p>Welcome to our website. Explore more about us or get in touch!</p>
+    <p>
+       <b>
+        <ul> <li>Digital Marketplace</li>
+            <li>Advert Center</li>
+            <li>Parcell Delivery</li>
+            <li>ICT services</li>
+        </ul>
+       </b>
+    </p>
+</section>
+
+<section id="about" style="display:none;">
+    <h2>About Us</h2>
+    <p>We are dedicated to providing the best service to our customers.</p>
+</section>
+
+<section id="contact" style="display:none;">
+    <h2>Contact Us</h2>
+    <form id="contact-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+        
+        <button type="submit">Submit</button>
+    </form>
+</section>
+<br>
+<br>
+<br><br><br><br><br><br><br><br><br>
+
+<footer>
+    <p>&copy; <b>Dahire Index:JPKE1060924155</b></p>
+</footer>
+
+<script>
+    const links = document.querySelectorAll('nav ul li a');
+    const sections = document.querySelectorAll('section');
+
+    links.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            sections.forEach(section => section.style.display = 'none');
+            const targetId = this.getAttribute('href').substring(1);
+            document.getElementById(targetId).style.display = 'block';
+        });
+    });
+
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault(); 
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        if (!name || !email || !message) {
+            alert("All fields are required.");
+            return;
+        }
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+
+        alert("Form submitted successfully!");
+        document.getElementById('contact-form').reset();
+    });
+</script>
+
+</body>
+</html>
